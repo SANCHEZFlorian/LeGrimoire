@@ -59,6 +59,20 @@
               <Icon name="PhBookBookmark" weight="duotone" /> Éditions
             </router-link>
           </template>
+
+          <!-- Section Support (Modérateurs & Admin) -->
+          <template v-if="isAdmin || isModerator">
+            <div class="nav-section">Support & Aide</div>
+            <router-link to="/admin/support-tickets" class="nav-item" active-class="active">
+              <Icon name="PhEnvelopeSimple" weight="duotone" /> Tickets Support
+            </router-link>
+            <router-link to="/admin/feature-suggestions" class="nav-item" active-class="active">
+              <Icon name="PhLightbulb" weight="duotone" /> Boîte à idées
+            </router-link>
+            <router-link to="/admin/faq" class="nav-item" active-class="active" v-if="isAdmin">
+              <Icon name="PhInfo" weight="duotone" /> Gérer FAQ
+            </router-link>
+          </template>
         </nav>
       </aside>
 

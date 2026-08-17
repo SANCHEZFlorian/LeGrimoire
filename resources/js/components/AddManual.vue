@@ -241,7 +241,7 @@ const form = reactive({
   audience: '',
   series_name: '',
   series_number: '',
-  genres: ['Fantasy'],
+  genres: [],
 
   // Édition
   format: 'Broché',

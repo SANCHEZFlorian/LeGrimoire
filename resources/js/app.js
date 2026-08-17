@@ -22,6 +22,7 @@ import Login from './components/Auth/Login.vue';
 import Register from './components/Auth/Register.vue';
 import AddManual from './components/AddManual.vue';
 import Chronicle from './components/Chronicle/Chronicle.vue';
+import Support from './components/Support/Support.vue';
 
 // Admin Pages
 import AdminLayout from './components/Admin/AdminLayout.vue';
@@ -33,6 +34,10 @@ import ModerationComments from './components/Admin/ModerationComments.vue';
 import CatalogWorks from './components/Admin/CatalogWorks.vue';
 import CatalogEditions from './components/Admin/CatalogEditions.vue';
 import CatalogSuggestions from './components/Admin/CatalogSuggestions.vue';
+
+import AdminFaq from './components/Admin/AdminFaq.vue';
+import AdminSupportTickets from './components/Admin/AdminSupportTickets.vue';
+import AdminFeatureSuggestions from './components/Admin/AdminFeatureSuggestions.vue';
 
 // Error Pages
 import NotFound from './components/Errors/NotFound.vue';
@@ -60,6 +65,7 @@ const routes = [
     { path: '/settings', name: 'Settings', component: Settings, meta: { requiresAuth: true } },
     { path: '/chronicle', name: 'Chronicle', component: Chronicle, meta: { requiresAuth: true } },
     { path: '/reading', name: 'CurrentReading', component: CurrentReading, meta: { requiresAuth: true } },
+    { path: '/support', name: 'Support', component: Support, meta: { requiresAuth: true } },
     { path: '/500', name: 'ServerError', component: ServerError },
     
     // Administration Routes
@@ -73,9 +79,15 @@ const routes = [
             { path: 'settings', name: 'AdminSettings', component: AdminSettings },
             { path: 'moderation/reviews', name: 'ModerationReviews', component: ModerationReviews },
             { path: 'moderation/comments', name: 'ModerationComments', component: ModerationComments },
+            // Catalogue (Librarians)
             { path: 'catalog/works', name: 'AdminCatalogWorks', component: CatalogWorks },
             { path: 'catalog/editions', name: 'AdminCatalogEditions', component: CatalogEditions },
-            { path: 'catalog/suggestions', name: 'AdminCatalogSuggestions', component: CatalogSuggestions }
+            { path: 'catalog/suggestions', name: 'AdminCatalogSuggestions', component: CatalogSuggestions },
+
+            // Support
+            { path: 'faq', name: 'AdminFaq', component: AdminFaq },
+            { path: 'support-tickets', name: 'AdminSupportTickets', component: AdminSupportTickets },
+            { path: 'feature-suggestions', name: 'AdminFeatureSuggestions', component: AdminFeatureSuggestions }
         ]
     },
 

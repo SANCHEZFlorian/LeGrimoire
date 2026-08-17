@@ -34,8 +34,8 @@
                   <div class="progress-bar-fill" :style="{ width: getProgressPct(reading) + '%' }"></div>
                 </div>
                 <div class="progress-text">
-                  <span>{{ reading.current_page }} / {{ reading.book.pages_count || '?' }} p.</span>
-                  <span>{{ getProgressPct(reading) }}%</span>
+                  <span>{{ reading.current_page }} / {{ reading.book?.pages_count || '?' }}p</span>
+                  <span class="progress-pct">{{ getProgressPct(reading) }}%</span>
                 </div>
               </div>
             </div>
@@ -263,7 +263,8 @@ const onSaved = (updated) => {
 .author { margin: 0 0 0.6rem; color: var(--color-text-muted); font-style: italic; font-size: 0.85rem; }
 .progress-bar-bg { background: var(--color-border); height: 8px; border-radius: 5px; overflow: hidden; }
 .progress-bar-fill { background: var(--color-primary); height: 100%; transition: width 0.4s; border-radius: 5px; }
-.progress-text { display: flex; justify-content: space-between; margin-top: 0.4rem; font-size: 0.8rem; color: var(--color-text-muted); }
+.progress-text { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; margin-top: 0.5rem; font-size: 0.8rem; color: var(--color-text-muted); }
+.progress-pct { font-weight: 600; }
 .btn-voir {
   flex-shrink: 0; padding: 0.4rem 0.8rem; background: none;
   border: 1px solid var(--color-primary); color: var(--color-primary); border-radius: 8px;

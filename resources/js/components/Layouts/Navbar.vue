@@ -60,6 +60,10 @@
           </div>
         </router-link>
 
+        <router-link to="/support" class="nav-item help-btn" title="Aide & Support">
+          <Icon name="PhQuestion" weight="duotone" size="28" />
+        </router-link>
+
         <div class="nav-item dropdown-trigger profile-menu" @mouseenter="showProfile = true" @mouseleave="showProfile = false">
           <div class="profile-icon">
             <Icon name="PhUserCircle" weight="duotone" size="28" />

@@ -45,17 +45,14 @@ class DashboardController extends Controller
         $progressionTotale = $allTotalPages > 0 ? round(($allCurrentPages / $allTotalPages) * 100) : 0;
 
         // 5. Bilan annuel — livres terminés par mois
-        $monthlyData = $user->readings()
-            ->where('status', 'finished')
-            ->whereYear('end_date', $year)
-            ->select(DB::raw('MONTH(end_date) as month'), DB::raw('count(*) as total'))
-            ->groupBy('month')
-            ->pluck('total', 'month')
-            ->toArray();
-
-        $monthlyStats = [];
-        for ($i = 1; $i <= 12; $i++) {
-            $monthlyStats[] = $monthlyData[$i] ?? 0;
+        $monthlyStats = array_fill(0, 12, 0);
+        foreach ($finishedThisYear as $r) {
+            if ($r->end_date) {
+                $month = (int) Carbon::parse($r->end_date)->format('n');
+                if ($month >= 1 && $month <= 12) {
+                    $monthlyStats[$month - 1]++;
+                }
+            }
         }
 
         // 6. Genre principal (cette année, livres terminés)
@@ -162,8 +159,9 @@ class DashboardController extends Controller
         // 15. Années disponibles
         $availableYears = $user->readings()
             ->whereNotNull('end_date')
-            ->selectRaw('DISTINCT YEAR(end_date) as year')
-            ->pluck('year')
+            ->pluck('end_date')
+            ->map(fn($d) => (int) Carbon::parse($d)->format('Y'))
+            ->unique()
             ->sort()
             ->values()
             ->toArray();

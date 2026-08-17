@@ -54,6 +54,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('readings', ReadingController::class);
     Route::apiResource('custom-awards', CustomAwardController::class);
 
+    // Support & Boîte à idées
+    Route::get('/support/faq', [App\Http\Controllers\Api\SupportController::class, 'faqs']);
+    Route::post('/support/tickets', [App\Http\Controllers\Api\SupportController::class, 'submitTicket']);
+    Route::get('/support/suggestions', [App\Http\Controllers\Api\SupportController::class, 'suggestions']);
+    Route::post('/support/suggestions', [App\Http\Controllers\Api\SupportController::class, 'submitSuggestion']);
+    Route::post('/support/suggestions/{suggestion}/vote', [App\Http\Controllers\Api\SupportController::class, 'voteSuggestion']);
+
     // Admin Routes
     Route::prefix('admin')->middleware('role:admin,moderator,librarian')->group(function () {
         // Placeholder routes for admin dashboard

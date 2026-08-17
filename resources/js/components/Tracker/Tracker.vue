@@ -5,33 +5,47 @@
     <div v-if="isLoading" class="loading-state">Chargement...</div>
 
     <div v-else class="tracker-content">
-      <!-- Filtres -->
-      <div class="filters-bar">
-        <div class="filter-group">
-          <label>Statut</label>
-          <CustomSelect v-model="filterStatus" :options="[
-            { value: 'all', label: 'Tous' },
-            { value: 'finished', label: 'Lus' },
-            { value: 'reading', label: 'En cours' },
-            { value: 'to_read', label: 'À lire' },
-            { value: 'wishlist', label: 'Wishlist' },
-            { value: 'dnf', label: 'DNF' }
-          ]" />
+      <!-- Recherche et Filtres -->
+      <div class="search-and-filters">
+        <div class="search-bar">
+          <Icon name="PhMagnifyingGlass" weight="bold" class="search-icon" />
+          <input 
+            type="text" 
+            v-model="searchQuery" 
+            placeholder="Rechercher par titre, auteur..." 
+          />
+          <button v-if="searchQuery" class="clear-btn" @click="searchQuery = ''" type="button" title="Effacer la recherche">
+            <Icon name="PhX" weight="bold" />
+          </button>
         </div>
-        <div class="filter-group">
-          <label>Format</label>
-          <CustomSelect v-model="filterFormat" :options="[
-            { value: 'all', label: 'Tous' },
-            { value: 'Broché', label: 'Broché' },
-            { value: 'Relié', label: 'Relié' },
-            { value: 'Poche', label: 'Poche' },
-            { value: 'Numérique', label: 'Numérique' },
-            { value: 'Audio', label: 'Audio' }
-          ]" />
-        </div>
-        <div class="filter-group">
-          <label>Genre</label>
-          <CustomSelect v-model="filterGenre" :options="genreOptions" />
+
+        <div class="filters-bar">
+          <div class="filter-group">
+            <label>Statut</label>
+            <CustomSelect v-model="filterStatus" :options="[
+              { value: 'all', label: 'Tous' },
+              { value: 'finished', label: 'Lus' },
+              { value: 'reading', label: 'En cours' },
+              { value: 'to_read', label: 'À lire' },
+              { value: 'wishlist', label: 'Wishlist' },
+              { value: 'dnf', label: 'DNF' }
+            ]" />
+          </div>
+          <div class="filter-group">
+            <label>Format</label>
+            <CustomSelect v-model="filterFormat" :options="[
+              { value: 'all', label: 'Tous' },
+              { value: 'Broché', label: 'Broché' },
+              { value: 'Relié', label: 'Relié' },
+              { value: 'Poche', label: 'Poche' },
+              { value: 'Numérique', label: 'Numérique' },
+              { value: 'Audio', label: 'Audio' }
+            ]" />
+          </div>
+          <div class="filter-group">
+            <label>Genre</label>
+            <CustomSelect v-model="filterGenre" :options="genreOptions" />
+          </div>
         </div>
       </div>
 
@@ -73,7 +87,8 @@
       </section>
 
       <div v-if="filteredBooks.length === 0 && !isLoading" class="empty-state">
-        Aucun livre ne correspond à vos filtres.
+        <span v-if="searchQuery">Aucun livre ne correspond à votre recherche "{{ searchQuery }}".</span>
+        <span v-else>Aucun livre ne correspond à vos filtres.</span>
       </div>
     </div>
 
@@ -99,6 +114,7 @@ import CustomSelect from '../Shared/CustomSelect.vue';
 const placeholder = 'https://via.placeholder.com/128x192.png?text=Pas+de+couverture';
 const isLoading = ref(true);
 const readings = ref([]);
+const searchQuery = ref('');
 const filterStatus = ref('all');
 const filterFormat = ref('all');
 const filterGenre = ref('all');
@@ -155,7 +171,15 @@ const genreOptions = computed(() => {
 const topBooks = computed(() => {
   return readings.value.filter(r => {
     const awards = r.work?.custom_awards || r.book?.custom_awards;
-    return awards && awards.length > 0;
+    if (!awards || awards.length === 0) return false;
+    if (searchQuery.value.trim()) {
+      const q = searchQuery.value.trim().toLowerCase();
+      const title = (getTitle(r) || '').toLowerCase();
+      const author = (getAuthor(r) || '').toLowerCase();
+      const saga = (r.work?.series_name || '').toLowerCase();
+      return title.includes(q) || author.includes(q) || saga.includes(q);
+    }
+    return true;
   });
 });
 
@@ -164,6 +188,16 @@ const filteredBooks = computed(() => {
     const awards = r.work?.custom_awards || r.book?.custom_awards;
     return !awards || awards.length === 0;
   });
+
+  if (searchQuery.value.trim()) {
+    const q = searchQuery.value.trim().toLowerCase();
+    books = books.filter(r => {
+      const title = (getTitle(r) || '').toLowerCase();
+      const author = (getAuthor(r) || '').toLowerCase();
+      const saga = (r.work?.series_name || '').toLowerCase();
+      return title.includes(q) || author.includes(q) || saga.includes(q);
+    });
+  }
 
   if (filterStatus.value !== 'all') {
     books = books.filter(r => r.status === filterStatus.value);
@@ -199,7 +233,59 @@ const onDeleted = (deletedId) => {
 .section-title { display: flex; align-items: center; gap: 0.5rem; color: var(--color-primary); }
 .loading-state { text-align: center; padding: 4rem; color: var(--color-text-muted); font-style: italic; }
 
-.filters-bar { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+.search-and-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 0.6rem 1rem;
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));
+  max-width: 500px;
+}
+
+.search-icon {
+  color: var(--color-text-muted);
+  font-size: 1.2rem;
+  margin-right: 0.75rem;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  color: var(--color-text);
+  font-family: inherit;
+  outline: none;
+}
+
+.clear-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.clear-btn:hover {
+  color: var(--color-text);
+}
+
+.filters-bar { display: flex; gap: 1rem; flex-wrap: wrap; }
 .filter-group { display: flex; flex-direction: column; gap: 0.3rem; }
 .filter-group label { font-size: 0.8rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
 

@@ -11,6 +11,8 @@ use Tests\TestCase;
 
 class CatalogAndReadingTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function test_catalog_can_create_work_and_edition_and_add_to_library(): void
     {
         $user = User::factory()->create();
