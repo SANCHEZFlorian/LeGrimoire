@@ -12,9 +12,9 @@ class ThemeController extends Controller
     {
         $user = auth('sanctum')->user();
         
-        $mode = $user->theme_mode ?? 'auto';
-        $themeName = $user->theme_name ?? 'grimoire';
-        $fixedSeason = $user->fixed_season;
+        $mode = $user?->theme_mode ?? 'auto';
+        $themeName = $user?->theme_name ?? 'grimoire';
+        $fixedSeason = $user?->fixed_season;
 
         // Calcul de la saison actuelle
         $month = (int) date('n');
