@@ -34,7 +34,7 @@
                   <div class="progress-bar-fill" :style="{ width: getProgressPct(reading) + '%' }"></div>
                 </div>
                 <div class="progress-text">
-                  <span>{{ reading.current_page }} / {{ reading.book?.pages_count || '?' }}p</span>
+                  <span class="progress-pages">{{ reading.current_page }} / {{ reading.book?.pages_count || '?' }}p</span>
                   <span class="progress-pct">{{ getProgressPct(reading) }}%</span>
                 </div>
               </div>
@@ -251,7 +251,7 @@ const onSaved = (updated) => {
 .section-header h2 { margin: 0; }
 .link-all { font-size: 0.9rem; color: var(--color-primary); text-decoration: none; font-weight: 600; }
 .link-all:hover { text-decoration: underline; }
-.current-books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+.current-books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem; }
 .current-book-card {
   display: flex; gap: 1rem; padding: 1rem; align-items: center;
   border: 1px solid var(--color-border); border-radius: var(--border-radius, 12px);
@@ -263,8 +263,9 @@ const onSaved = (updated) => {
 .author { margin: 0 0 0.6rem; color: var(--color-text-muted); font-style: italic; font-size: 0.85rem; }
 .progress-bar-bg { background: var(--color-border); height: 8px; border-radius: 5px; overflow: hidden; }
 .progress-bar-fill { background: var(--color-primary); height: 100%; transition: width 0.4s; border-radius: 5px; }
-.progress-text { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; margin-top: 0.5rem; font-size: 0.8rem; color: var(--color-text-muted); }
-.progress-pct { font-weight: 600; }
+.progress-text { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; margin-top: 0.5rem; font-size: 0.8rem; color: var(--color-text-muted); white-space: nowrap; }
+.progress-pages { white-space: nowrap; flex-shrink: 0; }
+.progress-pct { font-weight: 600; white-space: nowrap; flex-shrink: 0; }
 .btn-voir {
   flex-shrink: 0; padding: 0.4rem 0.8rem; background: none;
   border: 1px solid var(--color-primary); color: var(--color-primary); border-radius: 8px;
