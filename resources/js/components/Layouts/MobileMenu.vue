@@ -46,12 +46,8 @@
         </router-link>
 
         <div class="mobile-nav-section">
-          <h4>Ajouter</h4>
           <router-link to="/catalog" class="mobile-nav-item" @click="$emit('close')">
-            <Icon name="PhMagnifyingGlass" weight="bold" /> Chercher un livre (Catalogue)
-          </router-link>
-          <router-link to="/add-manual" class="mobile-nav-item" @click="$emit('close')">
-            <Icon name="PhPencilLine" weight="bold" /> Saisie manuelle d'œuvre
+            <Icon name="PhPlusCircle" weight="bold" /> Ajouter
           </router-link>
         </div>
       </nav>

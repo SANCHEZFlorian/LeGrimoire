@@ -53,20 +53,12 @@
       </nav>
 
       <div class="navbar-right desktop-only">
-        <div class="nav-item dropdown-trigger" @mouseenter="showAdd = true" @mouseleave="showAdd = false">
+        <router-link to="/catalog" class="nav-item" style="padding:0;">
           <div class="add-btn">
             <Icon name="PhPlusCircle" weight="fill" size="20" />
             <span>Ajouter</span>
           </div>
-          <div class="dropdown-menu align-right" v-show="showAdd">
-            <router-link to="/catalog" class="dropdown-item">
-              <Icon name="PhMagnifyingGlass" weight="bold" /> Chercher un livre (Catalogue)
-            </router-link>
-            <router-link to="/add-manual" class="dropdown-item">
-              <Icon name="PhPencilLine" weight="bold" /> Saisie manuelle d'œuvre
-            </router-link>
-          </div>
-        </div>
+        </router-link>
 
         <div class="nav-item dropdown-trigger profile-menu" @mouseenter="showProfile = true" @mouseleave="showProfile = false">
           <div class="profile-icon">

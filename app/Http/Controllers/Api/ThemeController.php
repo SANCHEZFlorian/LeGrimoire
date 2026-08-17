@@ -35,7 +35,7 @@ class ThemeController extends Controller
         $themesConfig = config('themes');
         
         // Fallback de sécurité si le thème demandé n'existe pas dans le config
-        if (!isset($themesConfig[$themeName])) {
+        if (!in_array($themeName, $themesConfig['available_themes'] ?? [])) {
             $themeName = 'grimoire';
         }
 

@@ -34,6 +34,10 @@ import CatalogWorks from './components/Admin/CatalogWorks.vue';
 import CatalogEditions from './components/Admin/CatalogEditions.vue';
 import CatalogSuggestions from './components/Admin/CatalogSuggestions.vue';
 
+// Error Pages
+import NotFound from './components/Errors/NotFound.vue';
+import ServerError from './components/Errors/ServerError.vue';
+
 // Restauration du token si présent
 const token = localStorage.getItem('auth_token');
 if (token) {
@@ -56,6 +60,7 @@ const routes = [
     { path: '/settings', name: 'Settings', component: Settings, meta: { requiresAuth: true } },
     { path: '/chronicle', name: 'Chronicle', component: Chronicle, meta: { requiresAuth: true } },
     { path: '/reading', name: 'CurrentReading', component: CurrentReading, meta: { requiresAuth: true } },
+    { path: '/500', name: 'ServerError', component: ServerError },
     
     // Administration Routes
     { 
@@ -72,7 +77,10 @@ const routes = [
             { path: 'catalog/editions', name: 'AdminCatalogEditions', component: CatalogEditions },
             { path: 'catalog/suggestions', name: 'AdminCatalogSuggestions', component: CatalogSuggestions }
         ]
-    }
+    },
+
+    // Catch-All 404
+    { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound }
 ];
 
 // Création de l'instance du Routeur
