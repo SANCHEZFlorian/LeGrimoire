@@ -1,0 +1,5 @@
+/* Overrides saisonniers pour l'Automne */
+[data-theme][data-season="automne"] {
+  /* Tons cuivrés et ambrés */
+  --color-accent: #ea580c;
+}

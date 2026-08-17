@@ -1,0 +1,5 @@
+/* Overrides saisonniers pour l'Hiver */
+[data-theme][data-season="hiver"] {
+  /* Tons froids et givrés */
+  --color-accent: #38bdf8;
+}

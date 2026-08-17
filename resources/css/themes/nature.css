@@ -1,0 +1,21 @@
+[data-theme="nature"] {
+  --font-heading: 'Amatic SC', cursive;
+  --font-body: 'Cabin', sans-serif;
+  
+  --color-bg: #f0f4ec;
+  --color-surface: rgba(46, 89, 46, 0.05);
+  
+  --color-primary: #2e593e;
+  --color-primary-light: rgba(46, 89, 62, 0.1);
+  --color-primary-hover: #1e4030;
+  
+  --color-accent: #8fbc8f;
+  
+  --color-text: #1a2e1a;
+  --color-text-muted: #5a7a5a;
+  
+  --color-border: rgba(46, 89, 62, 0.18);
+  
+  --border-radius: 8px;
+  --shadow-card: 0 2px 12px rgba(46, 89, 62, 0.1);
+}

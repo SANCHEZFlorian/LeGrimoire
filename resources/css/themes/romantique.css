@@ -1,0 +1,21 @@
+[data-theme="romantique"] {
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Lora', serif;
+  
+  --color-bg: #fdf2f5;
+  --color-surface: rgba(219, 112, 147, 0.06);
+  
+  --color-primary: #be185d;
+  --color-primary-light: rgba(190, 24, 93, 0.08);
+  --color-primary-hover: #9d174d;
+  
+  --color-accent: #d4a574;
+  
+  --color-text: #3d1f2b;
+  --color-text-muted: #8b6b7a;
+  
+  --color-border: rgba(190, 24, 93, 0.15);
+  
+  --border-radius: 16px;
+  --shadow-card: 0 4px 20px rgba(190, 24, 93, 0.08);
+}

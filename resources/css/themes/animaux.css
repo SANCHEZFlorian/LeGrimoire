@@ -1,0 +1,21 @@
+[data-theme="animaux"] {
+  --font-heading: 'Fredoka', sans-serif;
+  --font-body: 'Poppins', sans-serif;
+  
+  --color-bg: #fdf8f0;
+  --color-surface: rgba(180, 120, 60, 0.06);
+  
+  --color-primary: #b4783c;
+  --color-primary-light: rgba(180, 120, 60, 0.1);
+  --color-primary-hover: #9a6230;
+  
+  --color-accent: #e07a5f;
+  
+  --color-text: #2c2218;
+  --color-text-muted: #8a7a6a;
+  
+  --color-border: rgba(180, 120, 60, 0.18);
+  
+  --border-radius: 16px;
+  --shadow-card: 0 3px 15px rgba(180, 120, 60, 0.1);
+}

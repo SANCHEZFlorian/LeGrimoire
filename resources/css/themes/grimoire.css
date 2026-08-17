@@ -1,0 +1,21 @@
+[data-theme="grimoire"] {
+  --font-heading: 'MedievalSharp', cursive;
+  --font-body: 'Cormorant Garamond', serif;
+  
+  --color-bg: #faf6ee;
+  --color-surface: rgba(44, 30, 22, 0.06);
+  
+  --color-primary: #721c24;
+  --color-primary-light: rgba(114, 28, 36, 0.05);
+  --color-primary-hover: #5a151c;
+  
+  --color-accent: #b8860b;
+  
+  --color-text: #2c1e16;
+  --color-text-muted: #7a6040;
+  
+  --color-border: rgba(44, 30, 22, 0.2);
+  
+  --border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  --shadow-card: 0 2px 12px rgba(44, 30, 22, 0.12);
+}

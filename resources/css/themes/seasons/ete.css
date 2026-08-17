@@ -1,0 +1,5 @@
+/* Overrides saisonniers pour l'Été */
+[data-theme][data-season="ete"] {
+  /* Tons chauds et ensoleillés */
+  --color-accent: #fbbf24;
+}

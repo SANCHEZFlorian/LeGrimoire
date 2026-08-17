@@ -1,0 +1,21 @@
+[data-theme="dark-academia"] {
+  --font-heading: 'Merriweather', serif;
+  --font-body: 'Source Serif 4', serif;
+  
+  --color-bg: #1a1814;
+  --color-surface: rgba(212, 180, 131, 0.08);
+  
+  --color-primary: #c9a96e;
+  --color-primary-light: rgba(201, 169, 110, 0.15);
+  --color-primary-hover: #b8943f;
+  
+  --color-accent: #8b4513;
+  
+  --color-text: #e8dcc8;
+  --color-text-muted: #9a8b72;
+  
+  --color-border: rgba(201, 169, 110, 0.2);
+  
+  --border-radius: 4px;
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.4);
+}

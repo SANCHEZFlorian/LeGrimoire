@@ -1,0 +1,21 @@
+[data-theme="cottagecore"] {
+  --font-heading: 'Shadows Into Light', cursive;
+  --font-body: 'Nunito', sans-serif;
+  
+  --color-bg: #f5f0e8;
+  --color-surface: rgba(107, 142, 35, 0.06);
+  
+  --color-primary: #5a7a3a;
+  --color-primary-light: rgba(90, 122, 58, 0.1);
+  --color-primary-hover: #4a6530;
+  
+  --color-accent: #c8956a;
+  
+  --color-text: #3d3524;
+  --color-text-muted: #7a6f5a;
+  
+  --color-border: rgba(90, 122, 58, 0.2);
+  
+  --border-radius: 20px;
+  --shadow-card: 0 2px 10px rgba(90, 122, 58, 0.1);
+}

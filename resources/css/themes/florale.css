@@ -1,0 +1,21 @@
+[data-theme="florale"] {
+  --font-heading: 'Dancing Script', cursive;
+  --font-body: 'Quicksand', sans-serif;
+  
+  --color-bg: #fef9f3;
+  --color-surface: rgba(244, 162, 193, 0.06);
+  
+  --color-primary: #d946a8;
+  --color-primary-light: rgba(217, 70, 168, 0.1);
+  --color-primary-hover: #c026a3;
+  
+  --color-accent: #a3d977;
+  
+  --color-text: #2d1b3d;
+  --color-text-muted: #7a6b8a;
+  
+  --color-border: rgba(217, 70, 168, 0.15);
+  
+  --border-radius: 24px;
+  --shadow-card: 0 4px 16px rgba(217, 70, 168, 0.08);
+}

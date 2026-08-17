@@ -1,0 +1,36 @@
+/* Définition des tokens globaux qui ne dépendent pas des thèmes */
+:root {
+  /* Espacements */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* Layout */
+  --max-width-content: 1200px;
+  --navbar-height: 70px;
+}
+
+body {
+  /* Le bg-color est initialement défini par la variable du thème */
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  
+  /* Texture de papier globale mais opacité variable selon le thème */
+  background-image: 
+      url('https://www.transparenttextures.com/patterns/aged-paper.png'),
+      radial-gradient(circle at center, transparent 40%, rgba(139, 69, 19, 0.4) 120%);
+  background-blend-mode: multiply; 
+  background-repeat: repeat;
+  background-attachment: fixed;
+  
+  /* Transition douce lors du changement de thème */
+  transition: background-color var(--transition-slow), color var(--transition-slow);
+}

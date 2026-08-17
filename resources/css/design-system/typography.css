@@ -1,0 +1,19 @@
+/* Application de la typographie du thème */
+body, p, span, a, li, input, textarea, button {
+  font-family: var(--font-body, system-ui, sans-serif);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading, system-ui, sans-serif);
+  color: var(--color-primary);
+  font-weight: normal;
+  margin-bottom: var(--spacing-md);
+  margin-top: 0;
+}
+
+.page-title {
+  font-size: 2.2rem;
+  margin-bottom: var(--spacing-xl);
+}

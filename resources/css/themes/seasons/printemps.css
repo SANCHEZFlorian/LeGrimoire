@@ -1,0 +1,13 @@
+/* Overrides saisonniers pour le Printemps */
+[data-season="printemps"] {
+  /* Tons verdoyants et pastel */
+  --color-primary-override: #4ade80;
+}
+
+/* Ces overrides s'appliquent si l'utilisateur souhaite une nuance saisonnière
+   Pour garder la cohérence des thèmes, on va plutôt jouer sur des filtres,
+   ou ajouter des éléments spécifiques dans le composant SeasonParticles, 
+   mais on peut aussi ajuster la couleur d'accent. */
+[data-theme][data-season="printemps"] {
+  --color-accent: #a3d977;
+}

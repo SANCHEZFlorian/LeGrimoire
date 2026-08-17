@@ -1,0 +1,21 @@
+[data-theme="moderne"] {
+  --font-heading: 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  
+  --color-primary: #6366f1;
+  --color-primary-light: rgba(99, 102, 241, 0.08);
+  --color-primary-hover: #4f46e5;
+  
+  --color-accent: #06b6d4;
+  
+  --color-text: #1e1e2e;
+  --color-text-muted: #6b7280;
+  
+  --color-border: #e5e7eb;
+  
+  --border-radius: 12px;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+}
